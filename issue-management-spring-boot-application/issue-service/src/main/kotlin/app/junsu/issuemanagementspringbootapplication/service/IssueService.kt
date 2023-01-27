@@ -49,4 +49,21 @@ class IssueService(
             issueRepository.findByIdOrNull(id) ?: throw ServerException.NotFoundException("No Issue")
         )
     }
+
+    @Transactional
+    fun edit(userId: Long, id: Long, request: IssueRequest): IssueResponse {
+        val issue = issueRepository.findByIdOrNull(id) ?: throw ServerException.NotFoundException("No Issue")
+        return IssueResponse(
+            issueRepository.save(
+                issue.apply {
+                    summary = request.summary
+                    description = request.description
+                    this.userId = userId
+                    type = request.type
+                    priority = request.priority
+                    status = request.status
+                },
+            ),
+        )
+    }
 }

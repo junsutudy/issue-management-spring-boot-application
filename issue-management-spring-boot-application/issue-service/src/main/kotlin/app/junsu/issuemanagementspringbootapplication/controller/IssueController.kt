@@ -42,4 +42,17 @@ class IssueController(
     ): IssueResponse {
         return issueService.get(id)
     }
+
+    @PutMapping("/{id}")
+    fun edit(
+        authUser: AuthUser,
+        @PathVariable(name = "id") id: Long,
+        @RequestBody request: IssueRequest,
+    ): IssueResponse {
+        return issueService.edit(
+            userId = authUser.userId,
+            id = id,
+            request = request,
+        )
+    }
 }
