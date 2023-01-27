@@ -2,6 +2,7 @@ package app.junsu.issuemanagementspringbootapplication.service
 
 import app.junsu.issuemanagementspringbootapplication.domain.Issue
 import app.junsu.issuemanagementspringbootapplication.domain.IssueRepository
+import app.junsu.issuemanagementspringbootapplication.domain.enums.IssueStatus
 import app.junsu.issuemanagementspringbootapplication.model.IssueRequest
 import app.junsu.issuemanagementspringbootapplication.model.IssueResponse
 import org.springframework.stereotype.Service
@@ -29,5 +30,13 @@ class IssueService(
                 ),
             )
         )
+    }
+
+    @Transactional(readOnly = true)
+    fun getAll(
+        status: IssueStatus,
+    ): List<IssueResponse>? {
+        return issueRepository.findAllByStatusOrderByCreatedAtAsc(status)
+            ?.map { IssueResponse(it) }
     }
 }
