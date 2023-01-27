@@ -3,8 +3,10 @@ package app.junsu.issuemanagementspringbootapplication.service
 import app.junsu.issuemanagementspringbootapplication.domain.Issue
 import app.junsu.issuemanagementspringbootapplication.domain.IssueRepository
 import app.junsu.issuemanagementspringbootapplication.domain.enums.IssueStatus
+import app.junsu.issuemanagementspringbootapplication.exception.ServerException
 import app.junsu.issuemanagementspringbootapplication.model.IssueRequest
 import app.junsu.issuemanagementspringbootapplication.model.IssueResponse
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -36,7 +38,15 @@ class IssueService(
     fun getAll(
         status: IssueStatus,
     ): List<IssueResponse>? {
-        return issueRepository.findAllByStatusOrderByCreatedAtAsc(status)
-            ?.map { IssueResponse(it) }
+        return issueRepository.findAllByStatusOrderByCreatedAtAsc(status)?.map { IssueResponse(it) }
+    }
+
+    @Transactional(readOnly = true)
+    fun get(
+        id: Long,
+    ): IssueResponse {
+        return IssueResponse(
+            issueRepository.findByIdOrNull(id) ?: throw ServerException.NotFoundException("No Issue")
+        )
     }
 }

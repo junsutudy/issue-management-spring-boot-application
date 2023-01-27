@@ -34,4 +34,12 @@ class IssueController(
     ): List<IssueResponse>? {
         return issueService.getAll(status)
     }
+
+    @GetMapping("/{id}")
+    fun get(
+        authUser: AuthUser,
+        @PathVariable(name = "id") id: Long,
+    ): IssueResponse {
+        return issueService.get(id)
+    }
 }
