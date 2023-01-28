@@ -36,13 +36,13 @@ class AuthUserHandlerArgumentResolver : HandlerMethodArgumentResolver {
         // TODO
         return AuthUser(
             userId = 1,
-            userName = "junsuPark",
+            username = "junsuPark",
         )
     }
 }
 
 data class AuthUser(
     val userId: Long,
-    val userName: String,
+    val username: String,
     val profileUrl: String? = null,
 )

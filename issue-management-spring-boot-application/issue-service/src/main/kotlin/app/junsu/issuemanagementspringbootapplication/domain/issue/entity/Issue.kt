@@ -1,5 +1,7 @@
-package app.junsu.issuemanagementspringbootapplication.domain
+package app.junsu.issuemanagementspringbootapplication.domain.issue.entity
 
+import app.junsu.issuemanagementspringbootapplication.domain.BaseTimeEntity
+import app.junsu.issuemanagementspringbootapplication.domain.comment.entity.Comment
 import app.junsu.issuemanagementspringbootapplication.domain.enums.IssuePriority
 import app.junsu.issuemanagementspringbootapplication.domain.enums.IssueStatus
 import app.junsu.issuemanagementspringbootapplication.domain.enums.IssueType
@@ -15,4 +17,5 @@ class Issue(
     @Column(name = "type") @Enumerated(EnumType.STRING) var type: IssueType,
     @Column(name = "priority") @Enumerated(EnumType.STRING) var priority: IssuePriority,
     @Column(name = "status") @Enumerated(EnumType.STRING) var status: IssueStatus,
+    @OneToMany(fetch = FetchType.EAGER) val comments: MutableList<Comment> = mutableListOf()
 ) : BaseTimeEntity()

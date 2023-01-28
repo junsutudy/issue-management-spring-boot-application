@@ -1,10 +1,10 @@
-package app.junsu.issuemanagementspringbootapplication.controller
+package app.junsu.issuemanagementspringbootapplication.controller.issue
 
 import app.junsu.issuemanagementspringbootapplication.config.AuthUser
 import app.junsu.issuemanagementspringbootapplication.domain.enums.IssueStatus
-import app.junsu.issuemanagementspringbootapplication.model.IssueRequest
-import app.junsu.issuemanagementspringbootapplication.model.IssueResponse
-import app.junsu.issuemanagementspringbootapplication.service.IssueService
+import app.junsu.issuemanagementspringbootapplication.model.issue.IssueRequest
+import app.junsu.issuemanagementspringbootapplication.model.issue.IssueResponse
+import app.junsu.issuemanagementspringbootapplication.service.issue.IssueService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*

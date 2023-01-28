@@ -1,4 +1,4 @@
-package app.junsu.issuemanagementspringbootapplication.model
+package app.junsu.issuemanagementspringbootapplication.model.issue
 
 import app.junsu.issuemanagementspringbootapplication.domain.enums.IssuePriority
 import app.junsu.issuemanagementspringbootapplication.domain.enums.IssueStatus
