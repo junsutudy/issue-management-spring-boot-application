@@ -5,6 +5,7 @@ import app.junsu.issuemanagementspringbootapplication.model.comment.CommentReque
 import app.junsu.issuemanagementspringbootapplication.model.comment.CommentResponse
 import app.junsu.issuemanagementspringbootapplication.service.comment.CommentService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -38,6 +39,20 @@ class CommentController(
             issueId = issueId,
             userId = authUser.userId,
             request = request,
+        )
+    }
+
+    @DeleteMapping("/{comment-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun delete(
+        authUser: AuthUser,
+        @PathVariable("issue-id") issueId: Long,
+        @PathVariable("comment-id") commentId: Long,
+    ) {
+        return commentService.delete(
+            issueId = issueId,
+            commentId = commentId,
+            userId = authUser.userId,
         )
     }
 }

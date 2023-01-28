@@ -53,4 +53,21 @@ class CommentService(
             commentRepository.save(this).toResponse()
         }
     }
+
+    @Transactional
+    fun delete(
+        issueId: Long,
+        commentId: Long,
+        userId: Long,
+    ) {
+
+        val issue = issueRepository.findByIdOrNull(issueId) ?: throw ServerException.NotFoundException("No Issue")
+
+        commentRepository.findByIdAndUserId(
+            issueId = issueId,
+            userId = userId,
+        )?.let { comment ->
+            issue.comments.remove(comment)
+        }
+    }
 }
