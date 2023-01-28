@@ -6,6 +6,7 @@ import app.junsu.issuemanagementspringbootapplication.model.IssueRequest
 import app.junsu.issuemanagementspringbootapplication.model.IssueResponse
 import app.junsu.issuemanagementspringbootapplication.service.IssueService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -55,4 +56,16 @@ class IssueController(
             request = request,
         )
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun delete(
+        authUser: AuthUser,
+        @PathVariable(name = "id") id: Long,
+    ) {
+        return issueService.delete(
+            id = id,
+        )
+    }
+
 }

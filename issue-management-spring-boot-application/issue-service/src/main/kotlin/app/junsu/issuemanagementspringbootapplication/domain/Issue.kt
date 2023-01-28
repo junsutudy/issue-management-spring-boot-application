@@ -9,10 +9,10 @@ import jakarta.persistence.*
 @Table(name = "issue")
 class Issue(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null,
-    @Column var userId: Long,
-    @Column var summary: String,
-    @Column var description: String,
-    @Column @Enumerated(EnumType.STRING) var type: IssueType,
-    @Column @Enumerated(EnumType.STRING) var priority: IssuePriority,
-    @Column @Enumerated(EnumType.STRING) var status: IssueStatus,
+    @Column(name = "user_id") var userId: Long,
+    @Column(name = "summary") var summary: String,
+    @Column(name = "description") var description: String,
+    @Column(name = "type") @Enumerated(EnumType.STRING) var type: IssueType,
+    @Column(name = "priority") @Enumerated(EnumType.STRING) var priority: IssuePriority,
+    @Column(name = "status") @Enumerated(EnumType.STRING) var status: IssueStatus,
 ) : BaseTimeEntity()
