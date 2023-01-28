@@ -4,5 +4,5 @@ import app.junsu.issuemanagementspringbootapplication.domain.comment.entity.Comm
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface CommentRepository : JpaRepository<Comment, Long> {
-
+    fun findByIdAndUserId(issueId: Long, userId: Long): Comment?
 }
