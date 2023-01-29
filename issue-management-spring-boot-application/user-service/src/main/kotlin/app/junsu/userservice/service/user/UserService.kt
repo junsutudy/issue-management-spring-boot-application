@@ -79,4 +79,8 @@ class UserService(
             )
         }
     }
+
+    suspend fun signOut(token: String) {
+        cacheManager.awaitEvict(token)
+    }
 }
