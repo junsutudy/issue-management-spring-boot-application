@@ -4,3 +4,9 @@ server:
 spring:
   jpa:
     defer-datasource-initialization: true
+
+jwt:
+  issuer: issue-management
+  subject: auth
+  expires-time: 3600
+  secret: some-secret
