@@ -9,5 +9,5 @@ CREATE TABLE `USER`
     password    VARCHAR(500),
     profile_url VARCHAR(500),
     created_at  TIMESTAMP DEFAULT NOW(),
-    updated_at  TIMESTAMP DEFAULT NOW(),
+    updated_at  TIMESTAMP DEFAULT NOW()
 )

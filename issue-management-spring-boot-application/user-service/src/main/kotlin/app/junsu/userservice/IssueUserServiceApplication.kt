@@ -11,5 +11,3 @@ class IssueUserServiceApplication
 fun main(args: Array<String>) {
     runApplication<IssueUserServiceApplication>(*args)
 }
-
-
